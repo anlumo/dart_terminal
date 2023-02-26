@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer' as developer;
 
+import 'package:dart_eval/dart_eval.dart';
 import 'package:dartterm/readline.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
@@ -83,7 +84,16 @@ class _TermPageState extends State<TermPage> {
     );
 
     _readline!.run(controller.stream, (line) async {
-      _terminal!.write('line: $line\n\r');
+      try {
+        final result = eval(line);
+        _terminal!.write('$result\n\r');
+      } catch (e) {
+        final errorColor = TerminalThemes.defaultTheme.red;
+        _terminal!.setForegroundColorRgb(
+            errorColor.red, errorColor.green, errorColor.blue);
+        _terminal!.write('$e\n\r');
+        _terminal!.resetForeground();
+      }
     });
   }
 
