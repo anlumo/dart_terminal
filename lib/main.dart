@@ -59,6 +59,7 @@ class _TermPageState extends State<TermPage> {
   Terminal? _terminal;
   Readline? _readline;
   String title = "Dart Terminal";
+  final Logger log = Logger("TermPage");
 
   @override
   void initState() {
@@ -85,6 +86,12 @@ class _TermPageState extends State<TermPage> {
 
     _readline!.run(controller.stream, (line) async {
       try {
+        if (line.endsWith(';')) {
+          line = 'Future main2() async {$line} dynamic main() => main2();';
+        } else {
+          line = 'Future main2() async => $line; dynamic main() => main2();';
+        }
+        log.fine('Executing "$line".');
         final result = await eval(line);
         final resultStr = '$result\n';
         _terminal!.write(resultStr.replaceAll('\n', '\r\n'));
