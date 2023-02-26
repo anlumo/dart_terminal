@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:async/async.dart';
 import 'package:dartterm/codes.dart';
+import 'package:logging/logging.dart';
 import 'package:xterm/xterm.dart';
 
 class Readline {
@@ -13,6 +14,7 @@ class Readline {
   String? continuation;
   List<String> history = [];
   final int maxHistory;
+  final Logger log = Logger('Readline');
 
   Readline({
     required this.terminal,
@@ -34,6 +36,7 @@ class Readline {
           terminal.write("\n\r");
           break;
         }
+        log.fine('Executing command \'$result\'');
         await handler(result);
       }
     } finally {
@@ -162,7 +165,7 @@ class Readline {
           }
           break;
         default:
-          print('Unknown ANSI sequence ${inputStr.substring(1)}');
+          log.warning('Unknown ANSI sequence ${inputStr.substring(1)}');
       }
     } else {
       switch (inputStr) {

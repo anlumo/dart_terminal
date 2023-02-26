@@ -1,10 +1,24 @@
 import 'dart:async';
+import 'dart:developer' as developer;
 
 import 'package:dartterm/readline.dart';
 import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
 import 'package:xterm/xterm.dart';
 
 void main() {
+  Logger.root.level = Level.ALL;
+  Logger.root.onRecord.listen((record) {
+    developer.log(
+      record.message,
+      name: record.loggerName,
+      level: record.level.value,
+      time: record.time,
+      stackTrace: record.stackTrace,
+      zone: record.zone,
+      error: record.error,
+    );
+  });
   runApp(const MyApp());
 }
 
