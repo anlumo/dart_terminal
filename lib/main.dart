@@ -85,7 +85,7 @@ class _TermPageState extends State<TermPage> {
 
     _readline!.run(controller.stream, (line) async {
       try {
-        final result = eval(line);
+        final result = await eval(line);
         final resultStr = '$result\n';
         _terminal!.write(resultStr.replaceAll('\n', '\r\n'));
       } catch (e) {
