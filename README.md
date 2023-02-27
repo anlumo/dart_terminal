@@ -2,6 +2,8 @@
 
 A simple Dart RPL in a Flutter UI.
 
+![Screenshot](images/screenshot.png)
+
 ## Getting Started
 
 The usual Flutter compile steps apply:
