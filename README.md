@@ -35,7 +35,7 @@ This is the result. I had some trouble getting a readline equivalent working, si
 
 ## Limitations
 
-Unfortunately, dart_eval does not support a lot of Dart features we would benefit from. It does not expose all std functionality (for example, `Iterable.generate`) and even basic things like `?:` do not work. However, I hope that this improves over time.
+Unfortunately, dart_eval does not support a lot of Dart features we would benefit from. It does not expose all std functionality (for example, `Iterable.generate`) and even basic things like `?:` and the modulo operator `%` do not work. However, I hope that this improves over time.
 
 Also, multiline entry isn't supported right now. The text entry code would support it, but it's unclear at the moment how I could determine whether the entry is complete or not.
 
