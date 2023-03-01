@@ -1,6 +1,6 @@
 # Dartterm
 
-A simple Dart RPL in a Flutter UI.
+A simple Dart REPL in a Flutter UI.
 
 ### [Live Demo](https://anlumo.github.io/dart_terminal/)
 
