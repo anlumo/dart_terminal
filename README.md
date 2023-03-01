@@ -2,6 +2,8 @@
 
 A simple Dart RPL in a Flutter UI.
 
+### [Live Demo](https://anlumo.github.io/dart_terminal/)
+
 ![Screenshot](images/screenshot.png)
 
 ## Getting Started
